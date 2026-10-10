@@ -3,14 +3,14 @@
 // ============================================================
 
 // ------------------- CONFIG — EDIT THIS ---------------------
-const BOT_USERNAME   = "earnzone_bot"; // your bot's @username, no @ (Step 1)
+const BOT_USERNAME   = "tanvexoappbot"; // your bot's @username, no @ (Step 1)
 const APP_NAME       = "earn";         // mini-app SHORT NAME you'll give BotFather (Step 7), lowercase
-const ADMIN_ID       = 0;              // your Telegram ID (Step 9). 0 = admin off for now
+const ADMIN_ID       = 2022805638;     // your Telegram ID (Step 9). 0 = admin off for now
 const REF_BONUS      = 100;            // points per invited friend
 const JOIN_BONUS     = 50;             // points a new user starts with
 const MIN_WITHDRAW   = 1000;           // minimum points to withdraw
 const VERIFY_FILE    = "";             // ONLY if BotFather asks to verify your domain (Step 7)
-const VERIFY_CONTENT = BOT_USERNAME;   // content BotFather asks for (usually your bot username)
+const VERIFY_CONTENT = "tanvexoappbot"; // FIX: Added quotes around string
 const WEBHOOK_SECRET = "";             // optional Step 11: any random text
 // -------------------------------------------------------------
 
@@ -60,7 +60,7 @@ async function tgApi(env, method, body) {
   } catch (e) { return { ok: false }; }
 }
 
-// Validate Telegram initData (HMAC-SHA256 with bot token) — this proves users are real
+// Validate Telegram initData (HMAC-SHA256 with bot token)
 async function auth(request, env) {
   const raw = request.headers.get("Authorization") || "";
   if (!raw) return null;
@@ -181,7 +181,7 @@ async function handleAdmin(request, env) {
   return json({ ok: true });
 }
 
-// Optional: welcome message when someone presses START (activate in Step 11)
+// Optional: welcome message when someone presses START
 async function handleWebhook(request, env) {
   if (request.method !== "POST") return json({ ok: true });
   if (!WEBHOOK_SECRET || request.headers.get("X-Telegram-Bot-Api-Secret-Token") !== WEBHOOK_SECRET) return json({ ok: false }, 401);
