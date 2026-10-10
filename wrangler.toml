@@ -1,0 +1,8 @@
+name = "refer-earn"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "referdb"
+database_id = "39152383-faa0-4778-b562-71e779408921"
